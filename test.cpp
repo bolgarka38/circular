@@ -118,3 +118,36 @@ void demo_throwing_during_insert() {
     risky_list.insert_after(throwing_on_copy(77));
     std::cout << "После успешной вставки: " << risky_list << std::endl;
 }
+
+void show_help() {
+    std::cout << "\nУправление списками\n"
+              << "  help              - показать справку\n"
+              << "  list              - показать все списки (индексы)\n"
+              << "  select <idx>      - выбрать текущий список (по индексу)\n"
+              << "  new               - создать новый пустой список\n"
+              << "  delete_list <idx> - удалить список по индексу\n"
+              << "\nОперации с выбранным списком:\n"
+              << "  insert_before <val> - вставить перед текущим (копия)\n"
+              << "  insert_after  <val> - вставить после текущего (копия)\n"
+              << "  move_before   <val> - вставить перед текущим (перемещение)\n"
+              << "  move_after    <val> - вставить после текущего (перемещение)\n"
+              << "  delete_current     - удалить текущий элемент\n"
+              << "  next               - перейти к следующему элементу\n"
+              << "  prev               - перейти к предыдущему\n"
+              << "  current            - показать текущий элемент\n"
+              << "  show               - показать весь выбранный список\n"
+              << "  size               - размер выбранного списка\n"
+              << "  quit               - выход\n"
+              << std::endl;
+}
+
+void show_lists() {
+    if (lists.empty()) {
+        std::cout << "Нет ни одного списка.\n";
+        return;
+    }
+    std::cout << "Список списков (индекс : содержимое):\n";
+    for (size_t i = 0; i < lists.size(); ++i) {
+        std::cout << "  " << i << " : " << lists[i] << " (size=" << lists[i].size() << ")\n";
+    }
+}
